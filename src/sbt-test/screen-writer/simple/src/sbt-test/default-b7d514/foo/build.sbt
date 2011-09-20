@@ -1,0 +1,1 @@
+# seq(yourPluginSettings:_*)

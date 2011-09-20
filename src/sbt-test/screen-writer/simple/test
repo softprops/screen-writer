@@ -1,0 +1,5 @@
+# should generate a simple sbt scripted test
+> screen-writer:script foo
+$ exists src/sbt-test/example/foo/project/plugins/build.sbt
+$ exists src/sbt-test/example/foo/build.sbt
+$ exists src/sbt-test/example/foo/test
