@@ -1,1 +1,0 @@
-libraryDependencies += "default" %% "default-b7d514" % "0.1" 
