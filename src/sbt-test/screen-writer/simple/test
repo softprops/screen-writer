@@ -3,3 +3,9 @@
 $ exists src/sbt-test/example/foo/project/plugins/build.sbt
 $ exists src/sbt-test/example/foo/build.sbt
 $ exists src/sbt-test/example/foo/test
+
+# should scrap a script
+> screen-writer:scrap foo
+-$ exists src/sbt-test/example/foo/project/plugins/build.sbt
+-$ exists src/sbt-test/example/foo/build.sbt
+-$ exists src/sbt-test/example/foo/test
