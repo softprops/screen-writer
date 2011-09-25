@@ -1,4 +1,4 @@
 name := "example"
 
-seq(screenwriter.Plugin.options:_*)
+seq(screenWriterSettings:_*)
 

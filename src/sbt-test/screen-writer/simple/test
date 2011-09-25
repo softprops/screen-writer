@@ -1,11 +1,11 @@
 # should generate a simple sbt scripted test
-> screen-writer:script foo
+> script foo
 $ exists src/sbt-test/example/foo/project/plugins/build.sbt
 $ exists src/sbt-test/example/foo/build.sbt
 $ exists src/sbt-test/example/foo/test
 
 # should scrap a script
-> screen-writer:scrap foo
+> scrap foo
 -$ exists src/sbt-test/example/foo/project/plugins/build.sbt
 -$ exists src/sbt-test/example/foo/build.sbt
 -$ exists src/sbt-test/example/foo/test

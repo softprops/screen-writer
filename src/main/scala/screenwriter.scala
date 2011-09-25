@@ -1,11 +1,5 @@
 package screenwriter
 
-object Keys {
-  import sbt._
-  val script = InputKey[Unit]("script", "Generates a new sbt test script")
-  val scrap = InputKey[Unit]("scrap", "Deletes a sbt test script")
-}
-
 object TestFile {
   def defaultContent =
     """# write your tests below
@@ -15,7 +9,7 @@ object TestFile {
 
 object PluginsFile {
   def apply(org: String, name: String, version: String) =
-    """libraryDependencies += "%s" %%%% "%s" %% "%s" """.format(
+    """addSbtPlugin("%s" %% "%s" %% "%s")""".format(
       org, name, version
     )
 }
@@ -28,12 +22,18 @@ object BuildFile {
 object Plugin extends sbt.Plugin {
   import sbt._
   import sbt.Keys._
-  import screenwriter.Keys._
+  import ScreenWriterKeys._
   import java.io.File
 
-  val ScreenWriter = config("screen-writer")
+  object ScreenWriterKeys {
+    val script = InputKey[Unit]("script", "Generates a new sbt test script")
+    val scrap = InputKey[Unit]("scrap", "Deletes a sbt test script by name")
+  }
 
-  def options: Seq[Setting[_]] = inConfig(ScreenWriter)(Seq(
+  // this are not wrapped in a config by default
+  // because we want to create scripts in the
+  // global source directory
+  def screenWriterSettings: Seq[Setting[_]] = Seq(
     scrap <<= inputTask { (argsTask: TaskKey[Seq[String]]) =>
       (argsTask, sourceDirectory, name, streams) map {
         (args, src, name, out) =>
@@ -75,5 +75,5 @@ object Plugin extends sbt.Plugin {
           }
       }
     }
-  ))
+  )
 }

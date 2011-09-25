@@ -1,0 +1,8 @@
+Sbt test stub generation + de-generation
+
+- settings
+
+Below is a table of available settings
+
+    script  # generates an sbt script given a name
+    scrap   # removes an sbt script given a name
