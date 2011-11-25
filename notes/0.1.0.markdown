@@ -4,5 +4,5 @@ Sbt test stub generation + de-generation
 
 Below is a table of available settings
 
-    script  # generates an sbt script given a name
-    scrap   # removes an sbt script given a name
+    script  # generates a sbt script given a name
+    scrap   # removes a sbt script given a name
